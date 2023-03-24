@@ -1,0 +1,11 @@
+﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: 中间目录(obj\x64\Debug\)包含从另一个项目(final2.vcxproj)共享的文件。   这会导致错误的清除和重新生成行为。
+    正在创建库 bin\final_debug.lib 和对象 bin\final_debug.exp
+main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl maxiOsc::maxiOsc(void)" (??0maxiOsc@@QEAA@XZ)，函数 "public: __cdecl ofApp::ofApp(void)" (??0ofApp@@QEAA@XZ) 中引用了该符号
+main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl maxiDelayline::maxiDelayline(void)" (??0maxiDelayline@@QEAA@XZ)，函数 "public: __cdecl ofApp::ofApp(void)" (??0ofApp@@QEAA@XZ) 中引用了该符号
+main.obj : error LNK2019: 无法解析的外部符号 "public: __cdecl maxiClock::maxiClock(void)" (??0maxiClock@@QEAA@XZ)，函数 "public: __cdecl ofApp::ofApp(void)" (??0ofApp@@QEAA@XZ) 中引用了该符号
+main.obj : error LNK2001: 无法解析的外部符号 "public: static int maxiSettings::sampleRate" (?sampleRate@maxiSettings@@2HA)
+ofApp.obj : error LNK2019: 无法解析的外部符号 "public: bool __cdecl maxiSample::load(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,int)" (?load@maxiSample@@QEAA_NV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@H@Z)，函数 "public: virtual void __cdecl ofApp::setup(void)" (?setup@ofApp@@UEAAXXZ) 中引用了该符号
+ofApp.obj : error LNK2019: 无法解析的外部符号 "public: double __cdecl maxiSample::playOnce(void)" (?playOnce@maxiSample@@QEAANXZ)，函数 "public: virtual void __cdecl ofApp::audioOut(float *,int,int)" (?audioOut@ofApp@@UEAAXPEAMHH@Z) 中引用了该符号
+ofApp.obj : error LNK2019: 无法解析的外部符号 "public: void __cdecl maxiClock::setTempo(double)" (?setTempo@maxiClock@@QEAAXN@Z)，函数 "public: virtual void __cdecl ofApp::setup(void)" (?setup@ofApp@@UEAAXXZ) 中引用了该符号
+ofApp.obj : error LNK2019: 无法解析的外部符号 "public: void __cdecl maxiClock::setTicksPerBeat(int)" (?setTicksPerBeat@maxiClock@@QEAAXH@Z)，函数 "public: virtual void __cdecl ofApp::setup(void)" (?setup@ofApp@@UEAAXXZ) 中引用了该符号
+bin\final_debug.exe : fatal error LNK1120: 8 个无法解析的外部命令
