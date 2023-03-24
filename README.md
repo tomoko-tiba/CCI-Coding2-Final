@@ -6,11 +6,11 @@ https://user-images.githubusercontent.com/41440180/227395508-be2bea20-403e-43c2-
 
 ### 
 
-I have created an interactive audio-visual artwork using Openframeworks, incorporating the knowledge I have gained from this semester's classes on classes, inheritance, and the Maximilian library. The project has several key features:
+### I have created an interactive audio-visual artwork using Openframeworks, incorporating the knowledge I have gained from this semester's classes on classes, inheritance, and the Maximilian library. The project has several key features:
 
-## 0.1
+## Feature 1：Change image
 
-Firstly, pressing the keys 1, 2, and 3 will switch between three black and white images that I have imported as processing materials. Using Openframeworks, I have traversed every pixel in the image to generate a two-dimensional rectangular array of particles.
+Firstly, pressing the keys 1, 2, and 3 will switch between three mono-colored picture images that I have imported as processing materials. Using Openframeworks, I have traversed every pixel in the image to generate a two-dimensional rectangular array of particles.
 
 ```
 //--------------------------------------------------------------
@@ -45,14 +45,61 @@ void ofApp::attachPtn(ofImage img) {
 }
 ```
 
+## Feature 2：Move particles
+
 Secondly, moving the mouse affects the movement of the particles. I have obtained the position of the mouse and passed it to the instantiated class object to add force to the particles and make them move.
 
 ```
+void Cell::runAway(ofVec2f mousePos) {
+    // If the distance between the particle and the mouse is less than a threshold value, apply a force to move the particle.
+    if (mousePos.distance(pos) < 100) {
+        acc = pos - mousePos;
+        acc *= 0.2;
+        spd += acc;
+        pos += spd;
+    }
+}
 
+void Cell::update() {
+	//Return the particle to its initial position when it is not affected by the mouse.
+    acc = target - pos;
+    acc *= 0.01;
+    spd += acc;
+    pos += spd;
+    spd *= 0.6;
+
+    if (currentTime >= triggerTime) {
+        changingW = true;
+    }
+    else {
+        currentTime++;
+    }
+    if (changingW) w = ofLerp(w, wT, .025);
+}
 ```
 
+## Feature 3：Change music
 
 Thirdly, moving the mouse changes the synthesized background music. I have used the Maximilian library and the triangle function to generate music. The mouse's x-position alters the frequency of the sound.
+
+```
+void ofApp::audioOut(ofSoundBuffer &output) {
+	std::size_t outChannels = output.getNumChannels();
+
+	for (int i = 0; i < output.getNumFrames(); i++) {
+		freq = 100 + sin(phase * 0.1) * 50; // Frequency changes over time
+		amp = 0.2 + sin(phase * 0.2) * 0.1; // Amplitude changes over time
+
+		double wave = osc.triangle(freq + ofGetMouseX()*0.075) * amp; 
+		output[i * output.getNumChannels()] = wave; // left channel
+		output[i * output.getNumChannels() + 1] = wave; // right channel
+
+		phase += 0.05; 
+	}
+}
+```
+
+## Feature 4：Change image generation mode
 
 Lastly, pressing the R key will change the image generation mode between two different modes. The first mode generates rectangular particles with borders using the base class Cell, while the second mode generates circular particles using the subclass CellChild, which inherits all of the base class Cell's functions but only rewrites the shape of the particles in the display function.
 
