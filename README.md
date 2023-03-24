@@ -103,4 +103,4 @@ void ofApp::audioOut(ofSoundBuffer &output) {
 
 Lastly, pressing the R key will change the image generation mode between two different modes. The first mode generates rectangular particles with borders using the base class Cell, while the second mode generates circular particles using the subclass CellChild, which inherits all of the base class Cell's functions but only rewrites the shape of the particles in the display function.
 
-Through this project, I have applied my understanding of classes, inheritance, and Maximilian library usage in creating an engaging and interactive artwork that responds to user input.
+Through this project, I have applied my understanding of classes, inheritance, and Maximilian library usage in creating an engaging and interactive artwork that responds to user input. This project not only showcases my programming skills but also provides a fun and interactive experience, demonstrating the potential of audio-visual interaction technology.
